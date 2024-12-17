@@ -385,6 +385,11 @@ footer {
     font-weight: 400;
 }
 
+.hero__text-container,
+.hero__image {
+    border: 1px solid var(--background);
+}
+
 @keyframes horizontalSlideEffect {
     0% {
         width: 100%;
@@ -421,8 +426,9 @@ footer {
     .hero__content-container,
     .contact__form-group {
         flex-direction: column;
-        width: 100%;
     }
+
+    .hero__content { height: max-content; }
 
     .hero__content-container,
     .contact__form-group > input {
