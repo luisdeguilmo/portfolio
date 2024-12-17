@@ -17,26 +17,34 @@
             <div class="header__container">
                 <p class="header__title">Portfolio</p>
                 <nav class="header__nav">
-                    <ul class="header__nav-links">
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#home">Home</a>
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#about-me"
-                                >About Me</a
-                            >
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#projects"
-                                >Projects</a
-                            >
-                        </li>
-                        <li class="header__nav-item">
-                            <a class="header__nav-link" href="#contact"
-                                >Contact</a
-                            >
-                        </li>
-                    </ul>
+                    <label>
+                        <input type="checkbox" onchange="showLogoName();" />
+                        <div class="menu-toggle">
+                            <span class="top line"></span>
+                            <span class="mid line"></span>
+                            <span class="bottom line"></span>
+                        </div>
+                        <ul class="header__nav-links">
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#home">Home</a>
+                            </li>
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#about-me"
+                                    >About Me</a
+                                >
+                            </li>
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#projects"
+                                    >Projects</a
+                                >
+                            </li>
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#contact"
+                                    >Contact</a
+                                >
+                            </li>
+                        </ul>
+                    </label>
                 </nav>
             </div>
         </header>
@@ -61,6 +69,7 @@
                                 aut quidem vitae quaerat.
                             </p>
                             <button class="hero__button">Contact Me</button>
+                            <span class="hero-text__sliding-bar"></span>
                         </div>
                         <div class="hero__image">
                             <img
@@ -68,6 +77,7 @@
                                 width="400"
                                 alt="My Profile"
                             />
+                            <span class="hero-image__sliding-bar"></span>
                         </div>
                     </div>
                 </div>
@@ -96,6 +106,7 @@
                                         alt="HTML Icon"
                                     />
                                     <p>HTML</p>
+                                    <span class="slider"></span>
                                 </div>
                                 <div class="about-me__item">
                                     <img src="image/css-3.png" alt="CSS Icon" />
@@ -145,33 +156,60 @@
                     </h2>
                     <div class="projects__container">
                         <article class="project__item">
-                            <img
-                                src="image/landing-page.html.png"
-                                alt="Landing Page"
-                            />
+                            <div class="project__image-container">
+                                <img
+                                    src="image/landing-page.html.png"
+                                    alt="Landing Page"
+                                />
+                                <span class="project__slider">
+                                    <span>
+                                        <p>Technologies: HTML, CSS</p>
+                                        <p>Tools: Visual Studio Code</p>
+                                    </span>
+                                </span>
+                            </div>
                             <h6 class="project__title">Landing Page</h6>
                             <p class="project__description">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, esse.
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Doloribus, esse.
                             </p>
                         </article>
                         <article class="project__item">
-                            <img
-                                src="image/blog-website.html.png"
-                                alt="Blog Website"
-                            />
+                            <div class="project__image-container">
+                                <img
+                                    src="image/blog-website.html.png"
+                                    alt="Landing Page"
+                                />
+                                <span class="project__slider">
+                                    <span>
+                                        <p>Technologies: HTML, CSS</p>
+                                        <p>Tools: Visual Studio Code</p>
+                                    </span>
+                                </span>
+                            </div>
                             <h6 class="project__title">Blog Website</h6>
                             <p class="project__description">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate, assumenda.
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Voluptate, assumenda.
                             </p>
                         </article>
                         <article class="project__item">
-                            <img
-                                src="image/landing-page-2.html.png"
-                                alt="Landing Page"
-                            />
+                            <div class="project__image-container">
+                                <img
+                                    src="image/landing-page-2.html.png"
+                                    alt="Landing Page"
+                                />
+                                <span class="project__slider">
+                                    <span>
+                                        <p>Technologies: HTML, CSS</p>
+                                        <p>Tools: Visual Studio Code</p>
+                                    </span>
+                                </span>
+                            </div>
                             <h6 class="project__title">Landing Page</h6>
                             <p class="project__description">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, neque!
+                                Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. Expedita, neque!
                             </p>
                         </article>
                     </div>
@@ -210,7 +248,7 @@
                 </section>
             </div>
         </main>
-        
+
         <footer id="footer">
             <p>&copy; 2024 Luis Deguilmo. All Rights Reserved.</p>
         </footer>
