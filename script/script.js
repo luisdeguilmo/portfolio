@@ -50,3 +50,25 @@ function draw() {
 }
 
 draw();
+
+/* Navigation */
+
+function showLogoName() {
+    let headerTitle = document.createElement("p");
+    headerTitle.className = "header__title";
+    headerTitle.textContent = "Portfolio";
+    
+    headerTitle.style.fontSize = "25px";
+    headerTitle.style.position = "absolute";
+    headerTitle.style.left = "50%";
+    headerTitle.style.top = "5%";
+    headerTitle.style.transform = "translateX(-50%)";
+
+    let headerNavLinks = document.querySelector("ul.header__nav-links");
+
+    if (headerNavLinks) {
+        headerNavLinks.prepend(headerTitle);
+    } else {
+        console.error("Navigation links container not found!");
+    }
+}
