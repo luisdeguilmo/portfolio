@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #0D0D0D;
+    --text: #FFFFFF;
+    --accent: #1E90FF;
+    --button-hover: #2B2B2B;
+    --main-font: 'Poppins';
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-font);
+    color: var(--text);
+    
+}
+
+main {
+    flex: 1 0 100%;
+    background-color: var(--background);
+}
+
+.hero__content,
+.about-me__section,
+.projects__section,
+.contact__section {
+    height: auto;
+    padding: 20px 0 20px 0;
+}
+
+.about-me__title,
+.about-me__skills-title,
+.projects__title,
+.contact__title {
+    color: var(--text);
+    padding: 30px 0 30px 0;
+}
+
+.hero__content-text,
+.about-me__text,
+.projects__text,
+.contact__text {
+    color: var(--accent);
+}
+
+.header__container,
+.main__content-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: var(--background);
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.header__title {
+    color: var(--accent);
+}
+
+.header__nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.header__nav-link {
+    font-size: 10px;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.header__nav-link:hover,
+.header__nav-link:focus {
+    color: var(--accent);
+    outline: none;
+}
+
+.hero__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--background);
+}
+
+.hero__content-title {
+    color: var(--text);
+}
+
+.hero__content-intro {
+    text-align: justify;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.hero__button {
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 6px;
+    font-family: var(--main-font);
+    cursor: pointer;
+}
+
+#techCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero__button:hover,
+.hero__button:focus {
+    background-color: var(--button-hover);
+}
+
+.hero__content-container {
+    position: relative;
+    z-index: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 100%;
+}
+
+.about-me__description {
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.about-me__skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.about-me__skills-title {
+    text-align: center;
+}
+
+.about-me__item {
+    width: 100px;
+    padding: 20pX;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px var(--accent);
+    text-align: center;
+}
+
+.about-me__item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.about-me__item p {
+    font-size: 10px;
+}
+
+.projects__container {
+    display: grid;
+    grid: auto / repeat(3, 1fr);
+    gap: 10px;
+}
+
+.project__item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.project__description {
+    font-size: 8px;
+    font-weight: 200;
+}
+
+.contact__form-container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.contact__form-group {
+    display: flex;
+    gap: 10px;
+}
+
+.contact__form-group > input {
+    width: 50%;
+    color: var(--text);
+}
+
+.contact__form > textarea {
+    margin-top: 10px;
+    width: 100%;
+    resize: none;
+}
+
+.contact__name,
+.contact__email,
+.contact__message {
+    outline: none;
+    padding: 10px;
+    background-color: transparent;
+    border: 1.5px solid var(--accent);
+    border-radius: 7px;
+}
+
+.contact__name:focus,
+.contact__email:focus,
+.contact__message:focus {
+    border: 1.5px solid skyblue;
+}
+
+.contact__button {
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--accent);
+    color: white;
+    font-family: var(--main-font);
+    cursor: pointer;
+}
+
+footer {
+    margin-top: auto;
+    padding: 10px;
+    background-color: var(--background);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .hero__content-container,
+    .contact__form-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero__content-container,
+    .contact__form-group > input {
+        width: 100%;
+    }
+
+    .contact__form-container { width: 80%; }
+
+    .projects__container {
+        grid: auto / repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .projects__container {
+        grid: auto / repeat(1, 1fr);
+        gap: 20px;
+    }
+
+    .contact__form-container { width: 90%; }
+}
