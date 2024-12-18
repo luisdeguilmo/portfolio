@@ -322,6 +322,7 @@ section.active {
 
 .project__image-container {
     display: flex;
+    justify-content: stretch;
     position: relative;
     cursor: pointer;
 }
