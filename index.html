@@ -3,6 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            http-equiv="Cache-Control"
+            content="no-cache, no-store, must-revalidate"
+        />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
         <title>Portfolio</title>
         <link rel="stylesheet" href="style/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,6 +19,8 @@
         />
     </head>
     <body>
+        <!--Header-->
+
         <header class="header">
             <div class="header__container">
                 <p class="header__title">Portfolio</p>
@@ -26,7 +34,9 @@
                         </div>
                         <ul class="header__nav-links">
                             <li class="header__nav-item">
-                                <a class="header__nav-link" href="#home">Home</a>
+                                <a class="header__nav-link" href="#hero"
+                                    >Home</a
+                                >
                             </li>
                             <li class="header__nav-item">
                                 <a class="header__nav-link" href="#about-me"
@@ -49,24 +59,26 @@
             </div>
         </header>
 
+        <!--Main Content-->
+
         <main>
             <div class="main__content-container">
-                <div id="hero" class="hero__content">
+                <!--Hero Section-->
+
+                <section id="hero" class="hero__content">
                     <canvas id="techCanvas"></canvas>
                     <div class="hero__content-container">
                         <div class="hero__text-container">
                             <h1 class="hero__content-title">
-                                I'm
+                                Hello, I'm
                                 <span class="hero__content-text"
                                     >Luis Deguilmo</span
                                 >
                             </h1>
                             <p class="hero__content-intro">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Tenetur enim ea in, aspernatur
-                                ipsam, quas, ullam obcaecati laborum molestias
-                                pariatur assumenda amet eaque facilis! Odit cum
-                                aut quidem vitae quaerat.
+                                - a third year student taking up Bachelor of
+                                Science in Information Technology at Bohol
+                                Island State University Balilihan Campus.
                             </p>
                             <button class="hero__button">Contact Me</button>
                             <span class="hero-text__sliding-bar"></span>
@@ -80,18 +92,22 @@
                             <span class="hero-image__sliding-bar"></span>
                         </div>
                     </div>
-                </div>
+                </section>
+
+                <!--About Me Section-->
 
                 <section id="about-me" class="about-me__section">
                     <h2 class="about-me__title">
                         About <span class="about-me__text">Me</span>
                     </h2>
                     <p class="about-me__description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Consequatur veniam beatae odio atque quidem tenetur,
-                        pariatur error! Odit id, quos molestias mollitia facilis
-                        minima, placeat quidem perferendis autem explicabo
-                        provident.
+                        I’m an aspiring web developer passionate about creating
+                        user-friendly and visually appealing web experiences.
+                        With a basic foundation in HTML, CSS, and JavaScript.
+                        I’m constantly learning and experimenting with new tools
+                        and technologies to expand my skill set. My projects
+                        reflect my journey in web development, showcasing
+                        creativity, problem-solving, and attention to detail.
                     </p>
 
                     <div class="about-me__container">
@@ -150,6 +166,8 @@
                     </div>
                 </section>
 
+                <!--Projects Section-->
+
                 <section id="projects" class="projects__section">
                     <h2 class="projects__title">
                         My <span class="projects__text">Projects</span>
@@ -168,11 +186,13 @@
                                     </span>
                                 </span>
                             </div>
-                            <h6 class="project__title">Landing Page</h6>
-                            <p class="project__description">
-                                Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit. Doloribus, esse.
-                            </p>
+                            <div class="project__text-container">
+                                <h6 class="project__title">Landing Page</h6>
+                                <p class="project__description">
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Expedita, neque!
+                                </p>
+                            </div>
                         </article>
                         <article class="project__item">
                             <div class="project__image-container">
@@ -187,11 +207,13 @@
                                     </span>
                                 </span>
                             </div>
-                            <h6 class="project__title">Blog Website</h6>
-                            <p class="project__description">
-                                Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit. Voluptate, assumenda.
-                            </p>
+                            <div class="project__text-container">
+                                <h6 class="project__title">Landing Page</h6>
+                                <p class="project__description">
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Expedita, neque!
+                                </p>
+                            </div>
                         </article>
                         <article class="project__item">
                             <div class="project__image-container">
@@ -206,14 +228,18 @@
                                     </span>
                                 </span>
                             </div>
-                            <h6 class="project__title">Landing Page</h6>
-                            <p class="project__description">
-                                Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Expedita, neque!
-                            </p>
+                            <div class="project__text-container">
+                                <h6 class="project__title">Landing Page</h6>
+                                <p class="project__description">
+                                    Lorem ipsum dolor, sit amet consectetur
+                                    adipisicing elit. Expedita, neque!
+                                </p>
+                            </div>
                         </article>
                     </div>
                 </section>
+
+                <!--Contact Section-->
 
                 <section id="contact" class="contact__section">
                     <h2 class="contact__title">
@@ -248,6 +274,8 @@
                 </section>
             </div>
         </main>
+
+        <!--Footer-->
 
         <footer id="footer">
             <p>&copy; 2024 Luis Deguilmo. All Rights Reserved.</p>
