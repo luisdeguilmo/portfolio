@@ -1,6 +1,19 @@
+// Scroll to top on page reload
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+};
+
+// Optional: Clear session-related data if needed
+sessionStorage.clear();
+
+/* Technology Background */
+
+sessionStorage.clear();
+
 const canvas = document.getElementById("techCanvas");
 const ctx = canvas.getContext("2d");
 
+// Function to resize the canvas to fit the window
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -22,6 +35,7 @@ for (let i = 0; i < particleCount; i++) {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     particles.forEach((p, index) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
@@ -46,29 +60,183 @@ function draw() {
             }
         }
     });
+
     requestAnimationFrame(draw);
 }
 
-draw();
+draw(); // Start drawing particles
 
-/* Navigation */
+/* Burger Navigation Logo */
 
+// Function to show the logo name in the burger navigation
 function showLogoName() {
-    let headerTitle = document.createElement("p");
-    headerTitle.className = "header__title";
-    headerTitle.textContent = "Portfolio";
-    
-    headerTitle.style.fontSize = "25px";
-    headerTitle.style.position = "absolute";
-    headerTitle.style.left = "50%";
-    headerTitle.style.top = "5%";
-    headerTitle.style.transform = "translateX(-50%)";
+    if (window.innerWidth >= 600) return;
 
-    let headerNavLinks = document.querySelector("ul.header__nav-links");
+    if (!document.querySelector("p.header__title.new")) {
+        let headerTitle = document.createElement("p");
+        headerTitle.className = "header__title new";
+        headerTitle.textContent = "Portfolio";
 
-    if (headerNavLinks) {
-        headerNavLinks.prepend(headerTitle);
-    } else {
-        console.error("Navigation links container not found!");
+        // Set the style of the logo name
+        headerTitle.style.fontSize = "25px";
+        headerTitle.style.position = "absolute";
+        headerTitle.style.left = "50%";
+        headerTitle.style.top = "5%";
+        headerTitle.style.transform = "translateX(-50%)";
+
+        let headerNavLinks = document.querySelector("ul.header__nav-links");
+        if (headerNavLinks) {
+            headerNavLinks.prepend(headerTitle);
+        } else {
+            console.error("Navigation links container not found!");
+        }
     }
 }
+
+// Function to remove the logo name if window width is >= 600
+function removeLogoNameOnResize() {
+    let elem = document.querySelector("p.header__title.new");
+    if (window.innerWidth >= 600 && elem) {
+        elem.remove();
+    }
+}
+
+window.addEventListener("resize", removeLogoNameOnResize);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".header__nav-link");
+    const header = document.querySelector("header");
+    const sections = document.querySelectorAll("section");
+
+    let isClicking = false; // Tracks if the user is clicking a link
+
+    // Smooth scrolling when a navigation link is clicked
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            isClicking = true; // Disable scroll-based highlighting temporarily
+            const targetId = link.getAttribute("href");
+            const targetSection = document.querySelector(targetId);
+            const headerHeight = header.offsetHeight;
+
+            // Smooth scroll to the section
+            window.scrollTo({
+                top: targetSection.offsetTop - headerHeight,
+                behavior: "smooth",
+            });
+
+            // Mark the clicked link as active
+            navLinks.forEach((nav) => nav.classList.remove("active"));
+            link.classList.add("active");
+        });
+    });
+
+    // Highlight active link based on scroll position
+    const highlightActiveLink = () => {
+        let current = "";
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - header.offsetHeight;
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            // Determine the section currently in view
+            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        // Update the active class for navigation links
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("active");
+            }
+        });
+    };
+
+    // Listen for scrolling
+    let scrollTimeout;
+    window.addEventListener("scroll", () => {
+        if (isClicking) {
+            // Reset click-based marking if scrolling happens
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isClicking = false; // Re-enable scroll-based behavior after scrolling stabilizes
+            }, 100); // Short delay to avoid flickering during rapid scrolling
+        }
+        if (!isClicking) {
+            highlightActiveLink(); // Apply scroll-based highlighting only if not clicking
+        }
+    });
+
+    // Reveal sections as they come into view
+    const revealSections = () => {
+        const windowHeight = window.innerHeight;
+
+        sections.forEach((section) => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const revealPoint = 150;
+
+            if (sectionTop < windowHeight - revealPoint) {
+                section.classList.add("active");
+            } else {
+                section.classList.remove("active");
+            }
+        });
+    };
+
+    // Attach scroll event listener
+    window.addEventListener("scroll", revealSections);
+
+    // Initial setup
+    revealSections();
+    highlightActiveLink();
+});
+
+
+// Close navigation drawer when a link is clicked
+const navLinks = document.querySelectorAll(".header__nav-link");
+const menuCheckbox = document.querySelector('input[type="checkbox"]');
+
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        if (menuCheckbox) menuCheckbox.checked = false;
+    });
+});
+
+/* Form Validation */
+
+let submitButton = document.querySelector(".contact__button");
+
+submitButton.addEventListener('click', function () {
+    const nameField = document.querySelector('.contact__name');
+    const emailField = document.querySelector('.contact__email');
+    const messageField = document.querySelector('.contact__message');
+    let isValid = true;
+    let errorMessage = '';
+
+    if (nameField.value.trim() === '') {
+        isValid = false;
+        errorMessage += 'Name is required.\n';
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailField.value.trim() === '') {
+        isValid = false;
+        errorMessage += 'Email is required.\n';
+    } else if (!emailRegex.test(emailField.value.trim())) {
+        isValid = false;
+        errorMessage += 'Please enter a valid email address.\n';
+    }
+
+    if (messageField.value.trim() === '') {
+        isValid = false;
+        errorMessage += 'Message cannot be empty.\n';
+    }
+
+    if (!isValid) {
+        alert(errorMessage);
+    } else {
+        alert('Form submitted successfully!');
+        // You can add form submission logic here
+    }
+});
