@@ -367,6 +367,10 @@ section.active {
     height: auto;
 }
 
+.project__text-container {
+    padding: 4px;
+}
+
 .project__description {
     font-size: 8px;
     font-weight: 200;
