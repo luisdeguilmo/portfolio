@@ -374,6 +374,7 @@ section.active {
 .project__description {
     font-size: 8px;
     font-weight: 200;
+    text-align: justify;
 }
 
 /* Contact Section */
