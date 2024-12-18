@@ -28,6 +28,7 @@ body {
     flex-direction: column;
     font-family: var(--main-font);
     color: var(--text);
+    background-color: var(--background);
     position: relative;
 }
 
