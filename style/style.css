@@ -321,6 +321,7 @@ section.active {
 /* Projects Section */
 
 .project__image-container {
+    display: flex;
     position: relative;
     cursor: pointer;
 }
