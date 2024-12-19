@@ -237,6 +237,8 @@ submitButton.addEventListener('click', function () {
         alert(errorMessage);
     } else {
         alert('Form submitted successfully!');
-        // You can add form submission logic here
+        nameField.value = ""
+        emailField.value = ""
+        messageField.value = ""
     }
 });
