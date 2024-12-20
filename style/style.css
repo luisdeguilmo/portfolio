@@ -264,10 +264,6 @@ section.active {
     position: relative;
 }
 
-.hero__image img {
-    visibility: visible;
-}
-
 .hero-image__sliding-bar {
     position: absolute;
     bottom: 0;
@@ -379,7 +375,7 @@ section.active {
 /* Contact Section */
 
 .contact__section {
-    padding: 0 0 120px;
+    padding: 0 0 80px;
 }
 
 .contact__form-container {
