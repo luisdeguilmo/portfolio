@@ -207,38 +207,35 @@ navLinks.forEach((link) => {
 
 let submitButton = document.querySelector(".contact__button");
 
-submitButton.addEventListener('click', function () {
-    const nameField = document.querySelector('.contact__name');
-    const emailField = document.querySelector('.contact__email');
-    const messageField = document.querySelector('.contact__message');
-    let isValid = true;
-    let errorMessage = '';
+submitButton.addEventListener("click", function () {
+    const nameField = document.querySelector(".contact__name");
+    const emailField = document.querySelector(".contact__email");
+    const messageField = document.querySelector(".contact__message");
+ 
+    let errorMessage = "";
 
-    if (nameField.value.trim() === '') {
-        isValid = false;
-        errorMessage += 'Name is required.\n';
+    if (nameField.value.trim() === "") {
+        alert(errorMessage = "Name is required.");
+        return
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailField.value.trim() === '') {
-        isValid = false;
-        errorMessage += 'Email is required.\n';
+    if (emailField.value.trim() === "") {
+        alert(errorMessage = "Email is required.");
+        return
     } else if (!emailRegex.test(emailField.value.trim())) {
-        isValid = false;
-        errorMessage += 'Please enter a valid email address.\n';
+        alert(errorMessage = "Please enter a valid email address.");
+        return
     }
 
-    if (messageField.value.trim() === '') {
-        isValid = false;
-        errorMessage += 'Message cannot be empty.\n';
+    if (messageField.value.trim() === "") {
+        alert(errorMessage = "Message cannot be empty.");
+        return
     }
 
-    if (!isValid) {
-        alert(errorMessage);
-    } else {
-        alert('Form submitted successfully!');
-        nameField.value = ""
-        emailField.value = ""
-        messageField.value = ""
-    }
+    alert("Form submitted successfully!");
+
+    nameField.value = "";
+    emailField.value = "";
+    messageField.value = "";
 });
