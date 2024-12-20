@@ -139,7 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const sectionBottom = sectionTop + section.offsetHeight;
 
             // Determine the section currently in view
-            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionBottom
+            ) {
                 current = section.getAttribute("id");
             }
         });
@@ -191,7 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
     revealSections();
     highlightActiveLink();
 });
-
 
 // Close navigation drawer when a link is clicked
 const navLinks = document.querySelectorAll(".header__nav-link");
