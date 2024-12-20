@@ -158,10 +158,9 @@ input:checked + .menu-toggle .bottom {
 /* Section Styles */
 
 .about-me__section,
-.projects__section,
-.contact__section {
+.projects__section {
     height: auto;
-    padding: 60px 0 60px 0;
+    padding: 40px 0 40px 0;
 }
 
 .about-me__title,
@@ -378,6 +377,10 @@ section.active {
 }
 
 /* Contact Section */
+
+.contact__section {
+    padding: 0 0 70px;
+}
 
 .contact__form-container {
     width: 60%;
