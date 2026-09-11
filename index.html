@@ -1,33 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Portfolio of Luis Deguilmo, a 3rd year BSIT student at Bohol Island State University Balilihan Campus, building web projects with HTML, CSS, JavaScript, PHP and MySQL."
+        />
         <meta
             http-equiv="Cache-Control"
             content="no-cache, no-store, must-revalidate"
         />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
-        <title>Portfolio</title>
+        <title>Luis Deguilmo — Portfolio</title>
         <link rel="stylesheet" href="style/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
             rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
         />
     </head>
     <body>
-        
+        <a class="skip-link" href="#main">Skip to content</a>
+
         <!--Header-->
 
         <header class="header">
             <div class="header__container">
-                <p class="header__title">Portfolio</p>
+                <p class="header__title">Luis Deguilmo</p>
                 <nav class="header__nav">
                     <label>
-                        <input type="checkbox" onchange="showLogoName();" />
+                        <input
+                            type="checkbox"
+                            onchange="showLogoName();"
+                            aria-label="Toggle navigation menu"
+                        />
                         <div class="menu-toggle">
                             <span class="top line"></span>
                             <span class="mid line"></span>
@@ -62,36 +75,127 @@
 
         <!--Main Content-->
 
-        <main>
+        <main id="main">
             <div class="main__content-container">
-                
                 <!--Hero Section-->
 
                 <section id="hero" class="hero__content">
                     <canvas id="techCanvas"></canvas>
                     <div class="hero__content-container">
                         <div class="hero__text-container">
-                            <h1 class="hero__content-title">
-                                Hello, I'm
+                            <h1
+                                class="hero__content-title hero__reveal"
+                                style="--d: 0s"
+                            >
+                                Hi, I'm
                                 <span class="hero__content-text"
                                     >Luis Deguilmo</span
                                 >
                             </h1>
-                            <p class="hero__content-intro">
-                                - a third year student taking up Bachelor of
-                                Science in Information Technology at Bohol
-                                Island State University Balilihan Campus.
+                            <p
+                                class="hero__content-intro hero__reveal"
+                                style="--d: 0.12s"
+                            >
+                                — an aspiring Web Developer passionate about
+                            creating user-friendly, responsive, and visually
+                            appealing web experiences.
                             </p>
-                            <button class="hero__button">Contact Me</button>
-                            <span class="hero-text__sliding-bar"></span>
+                            <div
+                                class="hero__actions hero__reveal"
+                                style="--d: 0.24s"
+                            >
+                                <a href="#contact" class="hero__button">Contact me</a>
+                                <a class="hero__link" href="#projects"
+                                    >See my projects</a
+                                >
+                            </div>
+                            <ul
+                                class="hero__socials hero__reveal"
+                                style="--d: 0.34s"
+                            >
+                                <li>
+                                    <a
+                                        href="https://github.com/luisdeguilmo"
+                                        aria-label="GitHub profile"
+                                        title="GitHub link"
+                                        target="_blank"
+                                    >
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            width="18"
+                                            height="18"
+                                            fill="currentColor"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.86 3.15 8.98 7.52 10.43.55.1.75-.24.75-.53 0-.26-.01-1.13-.02-2.05-3.06.66-3.71-1.3-3.71-1.3-.5-1.27-1.22-1.6-1.22-1.6-.99-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.7-1.46-2.44-.28-5.01-1.22-5.01-5.44 0-1.2.43-2.19 1.13-2.96-.11-.28-.49-1.4.11-2.92 0 0 .92-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.43 3.02-1.13 3.02-1.13.6 1.52.22 2.64.11 2.92.7.77 1.13 1.76 1.13 2.96 0 4.23-2.58 5.16-5.03 5.43.39.34.74 1.01.74 2.04 0 1.47-.01 2.66-.01 3.02 0 .29.2.64.76.53 4.36-1.45 7.51-5.57 7.51-10.43C23.02 5.24 18.27.5 12 .5Z"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.linkedin.com/in/luis-deguilmo-89a163376/"
+                                        aria-label="LinkedIn profile"
+                                        title="LinkedIn link"
+                                        target="_blank"
+                                    >
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            width="18"
+                                            height="18"
+                                            fill="currentColor"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3.25a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.44 20h-3.37v-5.9c0-1.4-.03-3.2-1.95-3.2-1.96 0-2.26 1.53-2.26 3.1V20h-3.37V8.5h3.24v1.57h.05c.45-.86 1.56-1.77 3.22-1.77 3.44 0 4.44 2.27 4.44 5.2V20Z"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="mailto:deguilmoluis0@gmail.com"
+                                        aria-label="Send an email"
+                                        target="_blank"
+                                    >
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            width="18"
+                                            height="18"
+                                            fill="currentColor"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2.2.5 7.8 6.3L19.8 6H4.2ZM20 8.1l-7.4 6a1 1 0 0 1-1.2 0L4 8.1v10.4h16V8.1Z"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="hero__image">
-                            <img
-                                src="image/profile.png"
-                                width="400"
-                                alt="My Profile"
-                            />
-                            <span class="hero-image__sliding-bar"></span>
+                        <div class="hero__image hero__reveal" style="--d: 0.2s">
+                            <div class="editor">
+                                <div class="editor__bar">
+                                    <span
+                                        class="editor__dot editor__dot--r"
+                                    ></span>
+                                    <span
+                                        class="editor__dot editor__dot--y"
+                                    ></span>
+                                    <span
+                                        class="editor__dot editor__dot--g"
+                                    ></span>
+                                    <span class="editor__tab">profile.png</span>
+                                </div>
+                                <div class="editor__body">
+                                    <img
+                                        src="image/profile.png"
+                                        width="400"
+                                        alt="Photo of Luis Deguilmo"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -102,72 +206,117 @@
                     <h2 class="about-me__title">
                         About <span class="about-me__text">Me</span>
                     </h2>
-                    <p class="about-me__description">
-                        I’m an aspiring web developer passionate about creating
-                        user-friendly and visually appealing web experiences.
-                        I have a basic foundation in HTML, CSS, JavaScript, PHP
-                        and MySQL. I’m constantly learning and experimenting
-                        with new tools and technologies to expand my skill set.
-                        My projects reflect my journey in web development,
-                        showcasing creativity, problem-solving, and attention to
-                        detail. I enjoy transforming ideas into interactive and
-                        responsive designs that provide value to users. By
-                        staying updated with industry trends, I strive to create
-                        modern and efficient web solutions that balance
-                        aesthetics and functionality.
-                    </p>
 
-                    <div class="about-me__container">
+                    <div class="about-me__layout">
+                        <p class="about-me__description">
+                            I’m an aspiring Web Developer passionate about
+                            creating user-friendly, responsive, and visually
+                            appealing web experiences. I have a solid foundation
+                            in HTML, CSS, JavaScript, React, PHP, and MySQL, and I’m
+                            continuously learning and exploring new technologies
+                            to expand my skills. My current project reflects my
+                            journey in web development, where I apply
+                            creativity, problem-solving, and attention to detail
+                            to turn ideas into functional and interactive web
+                            experiences. I’m eager to gain real-world
+                            experience, grow as a developer, and create web
+                            solutions that provide value to users.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="about-me" class="about-me__section">
+                    <h2 class="about-me__title">
+                        Tech <span class="about-me__text">Stack</span>
+                    </h2>
+                    <div>
                         <article class="about-me__skills">
-                            <h3 class="about-me__skills-title">
-                                My <span class="about-me__text">Skills</span>
-                            </h3>
-                            <div class="about-me__skills-container">
-                                <div class="about-me__item">
-                                    <img
-                                        src="image/html-5.png"
-                                        alt="HTML Icon"
-                                    />
-                                    <p>HTML</p>
-                                    <span class="slider"></span>
-                                </div>
-                                <div class="about-me__item">
-                                    <img src="image/css-3.png" alt="CSS Icon" />
-                                    <p>CSS</p>
-                                </div>
-                                <div class="about-me__item">
-                                    <img src="image/js.png" alt="HTML Icon" />
-                                    <p>Javascript</p>
-                                </div>
-                                <div class="about-me__item">
-                                    <img src="image/php.png" alt="HTML Icon" />
-                                    <p>PHP</p>
-                                </div>
-                                <div class="about-me__item">
-                                    <img src="image/java.png" alt="HTML Icon" />
-                                    <p>Java</p>
-                                </div>
-                                <div class="about-me__item">
-                                    <img
-                                        src="image/mysql.png"
-                                        alt="HTML Icon"
-                                    />
-                                    <p>MySQL</p>
-                                </div>
-                                <div class="about-me__item">
-                                    <img
-                                        src="image/icons8-firebase-144.png"
-                                        alt="HTML Icon"
-                                    />
-                                    <p>Firebase</p>
-                                </div>
-                                <div class="about-me__item">
-                                    <img
-                                        src="image/icons8-visual-studio-code-2019-144.png"
-                                        alt="HTML Icon"
-                                    />
-                                    <p>VS Code</p>
-                                </div>
+                            <div class="skill-group">
+                                <h3 class="skill-group__title">
+                                    Programming Language
+                                </h3>
+                                <ul class="skill-list">
+                                    <li class="skill-item">
+                                        <img src="image/php.png" alt="" />
+                                        <span>PHP</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img src="image/js.png" alt="" />
+                                        <span>JavaScript</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img src="image/java.png" alt="" />
+                                        <span>Java</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="skill-group">
+                                <h3 class="skill-group__title">
+                                    Web Technologies
+                                </h3>
+                                <ul class="skill-list">
+                                    <li class="skill-item">
+                                        <img src="image/html-5.png" alt="" />
+                                        <span>HTML</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img src="image/css-3.png" alt="" />
+                                        <span>CSS</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img
+                                            src="image/programing.png"
+                                            alt=""
+                                        />
+                                        <span>ReactJS</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img src="image/inertia.png" alt="" />
+                                        <span>InertiaJS</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img src="image/tailwind.png" alt="" />
+                                        <span>TailwindCSS</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img
+                                            width="24"
+                                            src="image/laravel.png"
+                                            alt=""
+                                        />
+                                        <span>Laravel</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="skill-group">
+                                <h3 class="skill-group__title">Database</h3>
+                                <ul class="skill-list">
+                                    <li class="skill-item">
+                                        <img src="image/mysql.png" alt="" />
+                                        <span>MySQL</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="skill-group">
+                                <h3 class="skill-group__title">Tools</h3>
+                                <ul class="skill-list">
+                                    <li class="skill-item">
+                                        <img src="image/Git.png" alt="" />
+
+                                        <span>Git</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img src="image/GitHub.png" alt="" />
+                                        <span>GitHub</span>
+                                    </li>
+                                    <li class="skill-item">
+                                        <img
+                                            src="image/icons8-visual-studio-code-2019-144.png"
+                                            alt=""
+                                        />
+                                        <span>VS Code</span>
+                                    </li>
+                                </ul>
                             </div>
                         </article>
                     </div>
@@ -183,43 +332,71 @@
                         <article class="project__item">
                             <div class="project__image-container">
                                 <img
-                                    src="image/landing-page.html.png"
-                                    alt="Landing Page"
+                                    src="image/project1.png"
+                                    alt="Tzu Chi Scholarship Management System"
                                 />
+                                <a
+                                    href="https://tzu-chi-scholarship.onrender.com/"
+                                    target="_blank"
+                                    class="visit__button"
+                                >
+                                    Visit
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </a>
                                 <span class="project__slider">
-                                    <span>
-                                        <p>Technologies: HTML, CSS</p>
-                                        <p>Tools: Visual Studio Code</p>
+                                    <span class="project__tags">
+                                        <span>Web App</span>
+                                        <span>PHP</span>
+                                        <span>MySQL</span>
+                                        <span>React</span>
                                     </span>
                                 </span>
                             </div>
                             <div class="project__text-container">
-                                <h6 class="project__title">Landing Page</h6>
+                                <h6 class="project__title">
+                                    Tzu Chi Scholarship Management System
+                                </h6>
                                 <p class="project__description">
-                                    This landing page showcases a modern platform for building 
-                                    websites without code, designed to empower designers with a visual canvas.
+                                    Tzu Chi Scholarship Management System —
+                                    scholarship applications, scholar records,
+                                    document management, allowance processing,
+                                    and scholar duty monitoring.
                                 </p>
+                                <div class="tag">
+                                    <span class="tag__item">Web App</span>
+                                    <span class="tag__item">PHP</span>
+                                    <span class="tag__item">MySQL</span>
+                                    <span class="tag__item">React</span>
+                                </div>
+                                <a
+                                    href="https://tzu-chi-scholarship.onrender.com/"
+                                    target="_blank"
+                                    class="visit__button"
+                                >
+                                    Visit
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </a>
                             </div>
                         </article>
-                        <article class="project__item">
+                        <!-- <article class="project__item">
                             <div class="project__image-container">
                                 <img
                                     src="image/blog-website.html.png"
-                                    alt="Landing Page"
+                                    alt="Screenshot of a front-end developer blog"
                                 />
                                 <span class="project__slider">
-                                    <span>
-                                        <p>Technologies: HTML, CSS</p>
-                                        <p>Tools: Visual Studio Code</p>
+                                    <span class="project__tags">
+                                        <span>HTML</span>
+                                        <span>CSS</span>
                                     </span>
                                 </span>
                             </div>
                             <div class="project__text-container">
                                 <h6 class="project__title">Blog Website</h6>
                                 <p class="project__description">
-                                    This landing page is a personal blog for a front-end developer,
-                                    providing valuable tips, tutorials, and resources on web 
-                                    development topics such as CSS, JavaScript, and React.
+                                    A personal blog for a front-end developer,
+                                    providing tips, tutorials and resources on
+                                    topics such as CSS, JavaScript and React.
                                 </p>
                             </div>
                         </article>
@@ -227,24 +404,25 @@
                             <div class="project__image-container">
                                 <img
                                     src="image/landing-page-2.html.png"
-                                    alt="Landing Page"
+                                    alt="Screenshot of an interior design service landing page"
                                 />
                                 <span class="project__slider">
-                                    <span>
-                                        <p>Technologies: HTML, CSS</p>
-                                        <p>Tools: Visual Studio Code</p>
+                                    <span class="project__tags">
+                                        <span>HTML</span>
+                                        <span>CSS</span>
                                     </span>
                                 </span>
                             </div>
                             <div class="project__text-container">
                                 <h6 class="project__title">Landing Page</h6>
                                 <p class="project__description">
-                                    This landing page is designed for a home design or 
-                                    interior design service, showcasing a sleek and modern 
-                                    layout to inspire users to explore house design options.
+                                    Designed for a home and interior design
+                                    service, with a sleek, modern layout that
+                                    invites users to explore house design
+                                    options.
                                 </p>
                             </div>
-                        </article>
+                        </article> -->
                     </div>
                 </section>
 
@@ -254,31 +432,44 @@
                     <h2 class="contact__title">
                         Contact <span class="contact__text">Me</span>
                     </h2>
-                    <div class="contact__form-container">
-                        <form class="contact__form">
-                            <div class="contact__form-group">
-                                <input
-                                    class="contact__name"
-                                    type="text"
-                                    placeholder="Enter your name*"
-                                />
-
-                                <input
-                                    class="contact__email"
-                                    type="email"
-                                    placeholder="Enter your email*"
-                                />
-                            </div>
-                            <textarea
-                                class="contact__message"
-                                rows="10"
-                                cols="100"
-                                placeholder="Type your message here..."
-                            ></textarea>
-                            <button type="button" class="contact__button">
-                                Submit
-                            </button>
-                        </form>
+                    <div class="contact__wrap">
+                        <p class="contact__blurb">
+                            Have a project in mind, a question, or just want to
+                            say hi? My inbox is open — I read and reply to every
+                            message.
+                        </p>
+                        <div class="contact__form-container">
+                            <form class="contact__form" novalidate>
+                                <div class="contact__form-group">
+                                    <input
+                                        class="contact__name"
+                                        type="text"
+                                        placeholder="Enter your name*"
+                                        required
+                                    />
+                                    <input
+                                        class="contact__email"
+                                        type="email"
+                                        placeholder="Enter your email*"
+                                        required
+                                    />
+                                </div>
+                                <textarea
+                                    class="contact__message"
+                                    rows="8"
+                                    placeholder="Type your message here..."
+                                    required
+                                ></textarea>
+                                <p
+                                    class="contact__status"
+                                    role="status"
+                                    aria-live="polite"
+                                ></p>
+                                <button type="button" class="contact__button">
+                                    Send message
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </section>
             </div>

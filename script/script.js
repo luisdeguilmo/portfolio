@@ -3,35 +3,39 @@ window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 };
 
-// Optional: Clear session-related data if needed
 sessionStorage.clear();
 
 /* Technology Background */
 
-sessionStorage.clear();
-
 const canvas = document.getElementById("techCanvas");
 const ctx = canvas.getContext("2d");
+const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
 
-// Function to resize the canvas to fit the window
 function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
 }
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
 const particles = [];
-const particleCount = 100;
+const particleCount = 90;
+// Reduced-motion still gets a slow, gentle drift instead of a frozen frame.
+const speedFactor = prefersReducedMotion ? 0.15 : 1;
 
 for (let i = 0; i < particleCount; i++) {
     particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: Math.random() * 2 - 1,
-        vy: Math.random() * 2 - 1,
+        vx: (Math.random() * 1 - 0.5) * speedFactor,
+        vy: (Math.random() * 1 - 0.5) * speedFactor,
     });
 }
+
+let animationId = null;
+let isTabVisible = !document.hidden;
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -39,7 +43,7 @@ function draw() {
     particles.forEach((p, index) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "#00ffc6";
+        ctx.fillStyle = "#f5a623";
         ctx.fill();
 
         p.x += p.vx;
@@ -51,34 +55,55 @@ function draw() {
         for (let j = index + 1; j < particleCount; j++) {
             const p2 = particles[j];
             const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-            if (dist < 120) {
+            if (dist < 110) {
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
                 ctx.lineTo(p2.x, p2.y);
-                ctx.strokeStyle = "rgba(0, 255, 198, 0.1)";
+                ctx.strokeStyle = "rgba(94, 234, 212, 0.12)";
                 ctx.stroke();
             }
         }
     });
 
-    requestAnimationFrame(draw);
+    animationId = requestAnimationFrame(draw);
 }
 
-draw(); // Start drawing particles
+function startAnimation() {
+    if (!animationId && isTabVisible) {
+        animationId = requestAnimationFrame(draw);
+    }
+}
+
+function stopAnimation() {
+    if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+    }
+}
+
+startAnimation();
+
+// Pause the animation when the tab is hidden to save CPU/battery
+document.addEventListener("visibilitychange", () => {
+    isTabVisible = !document.hidden;
+    if (isTabVisible) {
+        startAnimation();
+    } else {
+        stopAnimation();
+    }
+});
 
 /* Burger Navigation Logo */
 
-// Function to show the logo name in the burger navigation
 function showLogoName() {
     if (window.innerWidth >= 600) return;
 
     if (!document.querySelector("p.header__title.new")) {
         let headerTitle = document.createElement("p");
         headerTitle.className = "header__title new";
-        headerTitle.textContent = "Portfolio";
+        headerTitle.textContent = "Luis Deguilmo";
 
-        // Set the style of the logo name
-        headerTitle.style.fontSize = "25px";
+        headerTitle.style.fontSize = "20px";
         headerTitle.style.position = "absolute";
         headerTitle.style.left = "50%";
         headerTitle.style.top = "5%";
@@ -93,7 +118,6 @@ function showLogoName() {
     }
 }
 
-// Function to remove the logo name if window width is >= 600
 function removeLogoNameOnResize() {
     let elem = document.querySelector("p.header__title.new");
     if (window.innerWidth >= 600 && elem) {
@@ -108,46 +132,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     const sections = document.querySelectorAll("section");
 
-    let isClicking = false; // Tracks if the user is clicking a link
+    let isClicking = false;
 
-    // Smooth scrolling when a navigation link is clicked
     navLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-            isClicking = true; // Disable scroll-based highlighting temporarily
+            isClicking = true;
             const targetId = link.getAttribute("href");
             const targetSection = document.querySelector(targetId);
             const headerHeight = header.offsetHeight;
 
-            // Smooth scroll to the section
             window.scrollTo({
                 top: targetSection.offsetTop - headerHeight,
-                behavior: "smooth",
+                behavior: prefersReducedMotion ? "auto" : "smooth",
             });
 
-            // Mark the clicked link as active
             navLinks.forEach((nav) => nav.classList.remove("active"));
             link.classList.add("active");
         });
     });
 
-    // Highlight active link based on scroll position
     const highlightActiveLink = () => {
         let current = "";
         sections.forEach((section) => {
             const sectionTop = section.offsetTop - header.offsetHeight;
             const sectionBottom = sectionTop + section.offsetHeight;
 
-            // Determine the section currently in view
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionBottom
-            ) {
+            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
                 current = section.getAttribute("id");
             }
         });
 
-        // Update the active class for navigation links
         navLinks.forEach((link) => {
             link.classList.remove("active");
             if (link.getAttribute("href") === `#${current}`) {
@@ -156,42 +171,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Listen for scrolling
     let scrollTimeout;
     window.addEventListener("scroll", () => {
         if (isClicking) {
-            // Reset click-based marking if scrolling happens
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
-                isClicking = false; // Re-enable scroll-based behavior after scrolling stabilizes
-            }, 100); // Short delay to avoid flickering during rapid scrolling
+                isClicking = false;
+            }, 100);
         }
         if (!isClicking) {
-            highlightActiveLink(); // Apply scroll-based highlighting only if not clicking
+            highlightActiveLink();
         }
     });
 
-    // Reveal sections as they come into view
-    const revealSections = () => {
-        const windowHeight = window.innerHeight;
-
-        sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const revealPoint = 150;
-
-            if (sectionTop < windowHeight - revealPoint) {
-                section.classList.add("active");
-            } else {
-                section.classList.remove("active");
-            }
-        });
-    };
-
-    // Attach scroll event listener
-    window.addEventListener("scroll", revealSections);
-
-    // Initial setup
-    revealSections();
     highlightActiveLink();
 });
 
@@ -207,37 +199,49 @@ navLinks.forEach((link) => {
 
 /* Form Validation */
 
-let submitButton = document.querySelector(".contact__button");
+const submitButton = document.querySelector(".contact__button");
+const statusEl = document.querySelector(".contact__status");
 
-submitButton.addEventListener("click", function () {
-    const nameField = document.querySelector(".contact__name");
-    const emailField = document.querySelector(".contact__email");
-    const messageField = document.querySelector(".contact__message");
- 
-    let errorMessage = "";
+function setStatus(message, state) {
+    statusEl.textContent = message;
+    statusEl.dataset.state = state;
+}
 
-    if (nameField.value.trim() === "") {
-        alert(errorMessage = "Name is required.");
-        return
-    }
+if (submitButton) {
+    submitButton.addEventListener("click", function () {
+        const nameField = document.querySelector(".contact__name");
+        const emailField = document.querySelector(".contact__email");
+        const messageField = document.querySelector(".contact__message");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailField.value.trim() === "") {
-        alert(errorMessage = "Email is required.");
-        return
-    } else if (!emailRegex.test(emailField.value.trim())) {
-        alert(errorMessage = "Please enter a valid email address.");
-        return
-    }
+        if (nameField.value.trim() === "") {
+            setStatus("Please enter your name.", "error");
+            nameField.focus();
+            return;
+        }
 
-    if (messageField.value.trim() === "") {
-        alert(errorMessage = "Message cannot be empty.");
-        return
-    }
+        if (emailField.value.trim() === "") {
+            setStatus("Please enter your email.", "error");
+            emailField.focus();
+            return;
+        }
 
-    alert("Form submitted successfully!");
+        if (!emailRegex.test(emailField.value.trim())) {
+            setStatus("Please enter a valid email address.", "error");
+            emailField.focus();
+            return;
+        }
 
-    nameField.value = "";
-    emailField.value = "";
-    messageField.value = "";
-});
+        if (messageField.value.trim() === "") {
+            setStatus("Please write a short message.", "error");
+            messageField.focus();
+            return;
+        }
+
+        setStatus("Message sent — thanks for reaching out!", "success");
+
+        nameField.value = "";
+        emailField.value = "";
+        messageField.value = "";
+    });
+}
